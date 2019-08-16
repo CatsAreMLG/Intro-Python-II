@@ -51,6 +51,8 @@ commands = {
     'take': 'You took ',
     'get': 'You took ',
     'drop': 'You dropped ',
+    'i': 'You view your inventory',
+    'inventory': 'You view your inventory',
     'n': 'You move north.',
     'e': 'You move east.',
     's': 'You move south.',
@@ -73,6 +75,7 @@ def print_invalid():
     print('|' + 'Invalid input.'.center(18, ' ') + '|')
     print('|' + 'get/take [item]'.center(18, ' ') + '|')
     print('|' + 'drop [item]'.center(18, ' ') + '|')
+    print('|' + 'i/inventory'.center(18, ' ') + '|')
     print('|' + 'n - Move North'.center(18, ' ') + '|')
     print('|' + 's - Move South'.center(18, ' ') + '|')
     print('|' + 'e - Move East'.center(18, ' ') + '|')
@@ -98,6 +101,9 @@ def validate_move(user_input):
                 yn = input(commands[actions[0]])
                 clear()
                 return yn.lower() == 'n'
+            elif actions[0] == 'i' or actions[0] == 'inventory':
+                player.view_inventory()
+                return True
             else:
                 move_check = player.move(actions[0])
                 if move_check:

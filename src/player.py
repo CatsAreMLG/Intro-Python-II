@@ -53,3 +53,9 @@ class Player:
                 inv.on_drop()
                 return True
         return False
+
+    def view_inventory(self):
+        inventory = ', '.join(item.name for item in self.inventory)
+        if len(inventory) == 0:
+            inventory = 'Empty'
+        print(f'Inventory: {inventory}')
