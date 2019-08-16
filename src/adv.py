@@ -49,6 +49,7 @@ player.set_room(room['outside'])
 
 commands = {
     'take': 'You took ',
+    'get': 'You took ',
     'drop': 'You dropped ',
     'n': 'You move north.',
     'e': 'You move east.',
@@ -70,7 +71,7 @@ def clear():
 def print_invalid():
     print('+------------------+')
     print('|' + 'Invalid input.'.center(18, ' ') + '|')
-    print('|' + 'take [item]'.center(18, ' ') + '|')
+    print('|' + 'get/take [item]'.center(18, ' ') + '|')
     print('|' + 'drop [item]'.center(18, ' ') + '|')
     print('|' + 'n - Move North'.center(18, ' ') + '|')
     print('|' + 's - Move South'.center(18, ' ') + '|')
@@ -107,7 +108,7 @@ def validate_move(user_input):
                     return True
         elif len(actions) == 2:
             drop_check = take_check = False
-            if actions[0] == 'take':
+            if actions[0] == 'take' or actions[0] == 'get':
                 take_check = player.take_item(actions[1])
             elif actions[0] == 'drop':
                 drop_check = player.drop_item(actions[1])
