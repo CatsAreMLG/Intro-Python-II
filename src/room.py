@@ -1,5 +1,4 @@
 import textwrap
-from item import Item
 
 
 class Room:
@@ -8,8 +7,8 @@ class Room:
         self.description = description
         self.items = []
 
-    def add_item(self, name, description):
-        self.items.append(Item(name, description))
+    def add_item(self, item):
+        self.items.append(item)
 
     def __str__(self):
         output = ''

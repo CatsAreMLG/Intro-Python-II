@@ -8,6 +8,7 @@ class Player:
         # Initialize name and current_room during creation
         self.name = name
         self.current_room = None
+        self.inventory = []
 
     def set_room(self, room):
         self.current_room = room
@@ -34,3 +35,19 @@ class Player:
                 return False
         except:
             return False
+
+    def take_item(self, item):
+        for room_item in self.current_room.items:
+            if room_item.name == item:
+                self.inventory.append(room_item)
+                print('you took ' + item)
+                return True
+        return False
+
+    def drop_item(self, item):
+        for inv in self.inventory:
+            if inv.name == item:
+                self.inventory.remove(inv)
+                print('you dropped ' + item)
+                return True
+        return False
