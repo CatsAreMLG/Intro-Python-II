@@ -40,6 +40,7 @@ class Player:
         for room_item in self.current_room.items:
             if room_item.name == item:
                 self.inventory.append(room_item)
+                self.current_room.remove_item(room_item)
                 print('you took ' + item)
                 return True
         return False
@@ -48,6 +49,7 @@ class Player:
         for inv in self.inventory:
             if inv.name == item:
                 self.inventory.remove(inv)
+                self.current_room.add_item(inv)
                 print('you dropped ' + item)
                 return True
         return False
